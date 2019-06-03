@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body style="height: 700px; width: 1500px; background-image: url(bg.jpg); background-size: 100% 100%">
+
+	<div class="row ml-5">
+		<h1>Очки:</h1>
+		<h1 class="score">0</h1>
+	</div>
+	<div class="row ml-5">
+		<h1>Жуки:</h1>
+		<h1 class="score2">0</h1>
+	</div>
+
+	
+	
+
+<script type="text/javascript">
+	let score = document.querySelector(".score");
+	let ochki = 0;
+	let score2 = document.querySelector(".score2");
+	let ochki2 = 0;
+
+	let interv= function(){
+			ochki2 = ochki2 + 1
+			score2.innerHTML=ochki2
+		let random = Math.random()*1400+"px";
+		let random1 = Math.random()*500+"px";
+		let newDiv = document.createElement('div');
+		
+		document.body.appendChild(newDiv);
+		newDiv.style.position = "absolute"
+		newDiv.style.backgroundImage = "url(img.svg)";
+		newDiv.style.backgroundSize= "100% 100%";
+		newDiv.style.height = "100px";
+		newDiv.style.width = "100px";
+		newDiv.style.marginLeft= random
+		newDiv.style.marginTop = random1
+		
+		newDiv.onclick = function(){
+			newDiv.style.display = "none"
+			ochki = ochki + 1 
+			score.innerHTML = ochki
+			ochki2 = ochki2 - 1
+			score2.innerHTML=ochki2
+		}
+
+	}
+
+	let endinterv = setInterval(interv,1000)
+
+	let timer = function() {
+		if ( ochki <= 9 ) {
+			alert("Ты проиграл")
+			
+		} 
+		else {
+			alert("Ты победил")
+			
+		}
+		clearInterval(endinterv)
+	}
+	setTimeout(timer,10000);
+	
+
+</script>
+</body>
+</html>
